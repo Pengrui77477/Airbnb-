@@ -6,9 +6,12 @@ import Chip from '@mui/material/Chip';
 import { RoomWrapper } from './style';
 const RoomItem = memo((props) => {
 
-    const { itemData } = props;
+    const { itemData, roomWidth = "25%" } = props;
     return (
-        <RoomWrapper verifyColor={itemData.verify_info.text_color}>
+        <RoomWrapper
+            verifyColor={itemData.verify_info.text_color}
+            roomWidth={roomWidth}
+        >
             <div className='inner'>
                 <div className="cover">
                     <img src={itemData.picture_url} alt="" />

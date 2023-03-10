@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const RoomWrapper = styled.div`
-    width: 25%;
+    width: ${props => props.roomWidth};
     padding:8px;
     
     .inner{

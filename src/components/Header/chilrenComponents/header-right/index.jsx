@@ -11,7 +11,7 @@ const HeaderRight = memo(() => {
     // 副作用
     useEffect(() => {
         function windowHandleClick() {
-            console.log(123);
+            // console.log(123);
             setShowPanel(false);
         }
 
