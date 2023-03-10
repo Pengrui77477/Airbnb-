@@ -1,3 +1,4 @@
+import ScollContainer from '@/base-ui/scoll-container'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import React, { memo, useState } from 'react'
@@ -14,20 +15,22 @@ const SectionTab = memo((props) => {
     }
     return (
         <SectionTabWrapper>
-            {
-                tabNames.map((item, index) => {
-                    return (
-                        <div
-                            key={item}
-                            className={classNames("item", { active: currentIndex === index })}
+            <ScollContainer>
+                {
+                    tabNames.map((item, index) => {
+                        return (
+                            <div
+                                key={item}
+                                className={classNames("item", { active: currentIndex === index })}
 
-                            onClick={e => handleItemClick(index, item)}
-                        >
-                            {item}
-                        </div>
-                    )
-                })
-            }
+                                onClick={e => handleItemClick(index, item)}
+                            >
+                                {item}
+                            </div>
+                        )
+                    })
+                }
+            </ScollContainer>
         </SectionTabWrapper>
     )
 })
