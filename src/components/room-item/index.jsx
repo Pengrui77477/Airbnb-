@@ -1,22 +1,58 @@
 import PropTypes from 'prop-types'
-import React, { memo } from 'react'
+import React, { memo, useRef } from 'react'
 import Rating from '@mui/material/Rating';
 import Chip from '@mui/material/Chip';
-
 import { RoomWrapper } from './style';
+import { Carousel } from 'antd';
+import { IcomoonArrowLeft } from '@/assets/svg/icon_arrow_left';
+import { IcomoonArrowRight } from '@/assets/svg/icon_arrow_right';
 const RoomItem = memo((props) => {
+    const { itemData, roomWidth = "25%", paddingLength = "8px" } = props;
+    const sliderRef = useRef()
+    const controlClickHandle = (isRight = true) => {
+        isRight ? sliderRef.current.next() : sliderRef.current.prev();
+    }
 
-    const { itemData, roomWidth = "25%",paddingLength = "8px" } = props;
     return (
         <RoomWrapper
             verifyColor={itemData.verify_info.text_color}
             roomWidth={roomWidth}
             paddingLength={paddingLength}
         >
-            <div className='inner'>
-                <div className="cover">
-                    <img src={itemData.picture_url} alt="" />
-                </div>
+            <div className='inner' title={itemData.name}>
+                {
+                    !!itemData.picture_urls
+                        ?
+                        <div className="slider">
+                            <div className="control">
+                                <div className="left" onClick={e => controlClickHandle(false)}>
+                                    <IcomoonArrowLeft />
+                                </div>
+                                <div className="right" onClick={e => controlClickHandle(true)}>
+                                    <IcomoonArrowRight />
+                                </div>
+                            </div>
+                            <div className="cover-shadow"></div>
+                            <Carousel dots={false} ref={sliderRef} >
+                                {
+                                    itemData?.picture_urls?.map(item => {
+                                        return (
+                                            <div key={item} className="cover">
+                                                <img src={item} alt="" />
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </Carousel>
+                        </div>
+                        :
+                        <div className="cover">
+                            <img src={itemData.picture_url} alt="" />
+                        </div>
+
+                }
+
+
                 <div className="info">
                     <div className="desc">
                         {itemData.verify_info.messages.join(' · ')}
@@ -50,7 +86,7 @@ const RoomItem = memo((props) => {
 
 RoomItem.propTypes = {
     itemData: PropTypes.object,
-    paddingLenth:PropTypes.string
+    paddingLenth: PropTypes.string
 }
 
 export default RoomItem

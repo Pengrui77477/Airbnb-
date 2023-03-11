@@ -1,4 +1,5 @@
 
 export const isEmptyObj = function (obj) {
-    return Object.keys(obj).length
+    if (!(obj instanceof Object)) return false;
+    return !!Object.keys(obj).length
 }

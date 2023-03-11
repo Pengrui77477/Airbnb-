@@ -31,9 +31,11 @@ export const ScollContainerWrapper = styled.div`
         right:-15px;
     }
     .slotContainer{
-        overflow:hidden;
+        overflow: hidden visible;
+        /* height: 105%; */
         .slot{
             width: 100%;
+            
             gap:${props => props.flexGap};
             display:flex;
             transition: transform 200ms ease;

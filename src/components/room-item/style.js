@@ -13,8 +13,25 @@ export const RoomWrapper = styled.div`
         &:hover{
             border-radius:10px;
             box-shadow: 0 2px 4px #B0B0B0;
+            .cover-shadow{
+                    position: absolute;
+                    inset:0;
+                    background: linear-gradient( 90deg, #000 ,transparent 10%,transparent 90%,#000);
+                    opacity:0.5;
+                    z-index:1;
+                    cursor: pointer;
+            }
+            .slider{
+                
+                .control{
+                    > div{
+                        opacity:1;
+                    }
+                }
+            }
+
         }
-        .cover{
+        >.cover{
             /* padding:8px; */
             position: relative;
             border-radius:5px;
@@ -31,6 +48,46 @@ export const RoomWrapper = styled.div`
                 height: 100%;
             }
         }
+        >.slider{
+            position: relative;
+            overflow: hidden;
+            border-radius:5px 5px 0 0;
+            
+            .control{
+                > div{
+                    font-size:50px;
+                    color:#fff;
+                    position: absolute;
+                    height: 100%;
+                    display: flex;
+                    align-items:center;
+                    z-index:99;
+                    top:50%;
+                    transform:translateY(-50%);
+                    cursor: pointer;
+                    opacity:0;
+                }
+                .right{
+                    right:0;
+                }
+            }
+            .cover{
+                position: relative;
+                border:1px solid #efefef;
+                padding:66.66% 8px 0;
+                overflow:hidden;
+                cursor: pointer;
+                img{
+                    position:absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+        
         .info{
             padding:10px;
             .desc{
