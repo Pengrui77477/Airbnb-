@@ -8,7 +8,7 @@ export const RoomWrapper = styled.div`
         
         /* background-color:#efefef; */
         width: 100%;
-        transition:0.2s ease;
+        transition: 0.2s ease;
         /* padding:5px; */
         &:hover{
             border-radius:10px;
@@ -24,37 +24,18 @@ export const RoomWrapper = styled.div`
             .slider{
                 
                 .control{
-                    > div{
-                        opacity:1;
-                    }
+                    opacity:1;
                 }
             }
 
-        }
-        >.cover{
-            /* padding:8px; */
-            position: relative;
-            border-radius:5px;
-            border:1px solid #efefef;
-            padding:66.66% 8px 0;
-            overflow:hidden;
-            cursor: pointer;
-            /* height: 66.66%; */
-            img{
-                position:absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-            }
         }
         >.slider{
             position: relative;
             overflow: hidden;
             border-radius:5px 5px 0 0;
-            
             .control{
-                > div{
+                opacity:0;
+                .btn{
                     font-size:50px;
                     color:#fff;
                     position: absolute;
@@ -65,10 +46,27 @@ export const RoomWrapper = styled.div`
                     top:50%;
                     transform:translateY(-50%);
                     cursor: pointer;
-                    opacity:0;
+                    
                 }
                 .right{
                     right:0;
+                }
+                .dots{
+                    position: absolute;
+                    color:#fff;
+                    font-size:42px;
+                    z-index:9;
+                    bottom:0px;
+                    width: 35%;
+                    height: 20px;
+                    left: 0;
+                    right: 0;
+                    overflow:hidden;
+                    margin:0 auto;
+                    .active{
+                        color:red;
+                    }
+                    cursor: pointer;
                 }
             }
             .cover{
@@ -87,6 +85,24 @@ export const RoomWrapper = styled.div`
                 }
             }
         }
+        >.cover{
+            /* padding:8px; */
+            position: relative;
+            border-radius:5px;
+            border:1px solid #efefef;
+            padding:66.66% 8px 0;
+            overflow:hidden;
+            cursor: pointer;
+            /* height: 66.66%; */
+            img{
+                position:absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        
         
         .info{
             padding:10px;

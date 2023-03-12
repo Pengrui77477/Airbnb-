@@ -1,3 +1,4 @@
+import Test from '@/views/test';
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
@@ -21,6 +22,10 @@ const routes = [
     {
         path: "/entire",
         element: <Entire />
+    },
+    {
+        path:"/test",
+        element:<Test />
     }
 ]
 export default routes;
