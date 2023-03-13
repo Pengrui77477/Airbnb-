@@ -9,7 +9,7 @@ import SectionFooter from '@/components/section-footer'
 
 const HomeSectionV2 = memo((props) => {
     const { infoData } = props;
-    const initName = Object.keys(infoData.dest_list)[0];
+    const initName = Object.keys(infoData?.dest_list)[0];
     const [name, setName] = useState(initName)
     const tabNames = infoData.dest_address?.map(item => item.name);
     const handleTabClick = useCallback((index, name) => {

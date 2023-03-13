@@ -1,9 +1,22 @@
+import { isEmptyObj } from '@/utils'
 import React, { memo } from 'react'
+import { shallowEqual, useSelector } from 'react-redux'
 
-const index = memo(() => {
+import DetailInfo from './c-conps/detail-infos'
+import DetailPicture from './c-conps/detail-pictures'
+import { DetailWrapper } from './style'
+
+const Detail = memo(() => {
+
+  const { detailInfo } = useSelector(state => ({
+    detailInfo: state.detail.detailInfo
+  }), shallowEqual)
   return (
-    <div>detail</div>
+    <DetailWrapper>
+      {isEmptyObj(detailInfo) && <DetailPicture detailInfo={detailInfo} />}
+      <DetailInfo />
+    </DetailWrapper>
   )
 })
 
-export default index
+export default Detail

@@ -1,4 +1,4 @@
-import ScollContainer from '@/base-ui/scoll-container'
+import ScollContainer from '@/base-ui/scoller'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import React, { memo, useState } from 'react'

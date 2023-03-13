@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { SectionV4Wrapper } from './style'
 import SectionHeader from '@/components/section-header'
-import ScollContainer from '@/base-ui/scoll-container';
+import ScollContainer from '@/base-ui/scoller';
 import RoomItem from '@/components/room-item';
 
 function HomeSectionV4(props) {

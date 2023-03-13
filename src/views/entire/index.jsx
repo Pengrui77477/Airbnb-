@@ -19,7 +19,7 @@ const Entire = memo(() => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchEntireDataAction())
+    dispatch(fetchEntireDataAction(0))
   }, [dispatch])
   return (
     <EntireWrapper>

@@ -54,10 +54,10 @@ export const RoomWrapper = styled.div`
                 .dots{
                     position: absolute;
                     color:#fff;
-                    font-size:42px;
+                    font-size:3rem;
                     z-index:9;
                     bottom:0px;
-                    width: 35%;
+                    width: 5rem;
                     height: 20px;
                     left: 0;
                     right: 0;

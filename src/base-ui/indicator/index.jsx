@@ -10,7 +10,7 @@ const IndicatorContainer = memo((props) => {
   useEffect(() => {
     if ( typeof currentIndex !== 'number') return;
     const currentEl = indicatorRef.current.children[currentIndex];
-
+    // console.log(currentIndex);
     const indicatorWidth = indicatorRef.current.clientWidth;
     const indicatorScroll = indicatorRef.current.scrollWidth;
 

@@ -9,11 +9,11 @@ import { IcomoonArrowRight } from '@/assets/svg/icon_arrow_right';
 import IndicatorContainer from '@/base-ui/indicator';
 import classNames from 'classnames';
 const RoomItem = memo((props) => {
-    const { itemData, roomWidth = "25%", paddingLength = "8px" } = props;
+    const { itemData, roomWidth = "25%", paddingLength = "8px",itemClick } = props;
     const [currentIndex, setCurrentIndex] = useState(0);
     const sliderRef = useRef()
 
-    const controlClickHandle = (isRight = true) => {
+    const controlClickHandle = (isRight = true,event) => {
         isRight ? sliderRef.current.next() : sliderRef.current.prev();
         let newIndex = 0
         const length = itemData.picture_urls.length;
@@ -21,13 +21,19 @@ const RoomItem = memo((props) => {
         newIndex = isRight ? currentIndex + 1 : currentIndex - 1;
         if (newIndex < 0) newIndex = length - 1;
         if (newIndex === length) newIndex = 0;
-
+        
         setCurrentIndex(newIndex);
+        //阻止冒泡
+        event.stopPropagation()
     }
 
-    const dotClickHandle = (index)=>{
+    const dotClickHandle = (index,event)=>{
         setCurrentIndex(index);
-        sliderRef.current.goTo(index, true)
+        sliderRef.current.goTo(index, true);
+        event.stopPropagation()
+    }
+    const clickToDetailHandle = ()=>{
+        if(itemClick) itemClick(itemData);
     }
     return (
         <RoomWrapper
@@ -35,22 +41,22 @@ const RoomItem = memo((props) => {
             roomWidth={roomWidth}
             paddingLength={paddingLength}
         >
-            <div className='inner' title={itemData.name}>
+            <div className='inner' title={itemData.name} onClick={clickToDetailHandle} >
                 {
                     !!itemData.picture_urls
                         ?
                         <div className="slider">
                             <div className="control">
-                                <div className="btn left" onClick={e => controlClickHandle(false)}>
+                                <div className="btn left" onClick={e => controlClickHandle(false,e)}>
                                     <IcomoonArrowLeft />
                                 </div>
-                                <div className="btn right" onClick={e => controlClickHandle(true)}>
+                                <div className="btn right" onClick={e => controlClickHandle(true,e)}>
                                     <IcomoonArrowRight />
                                 </div>
                                 <div className="dots">
                                     <IndicatorContainer currentIndex={currentIndex}>
                                         {itemData.picture_urls.map((item, index) => {
-                                            return <span onClick={e => dotClickHandle(index)} className={classNames({ 'active': currentIndex === index })} key={item}>·</span>
+                                            return <span onClick={e => dotClickHandle(index,e)} className={classNames({ 'active': currentIndex === index })} key={item}>·</span>
                                         })}
                                     </IndicatorContainer>
                                 </div>
@@ -109,7 +115,8 @@ const RoomItem = memo((props) => {
 
 RoomItem.propTypes = {
     itemData: PropTypes.object,
-    paddingLenth: PropTypes.string
+    paddingLenth: PropTypes.string,
+    itemClick:PropTypes.func,
 }
 
 export default RoomItem

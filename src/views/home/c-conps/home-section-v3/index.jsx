@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { SectionV3Wrapper } from './style'
 import SectionHeader from '@/components/section-header'
-import ScollContainer from '@/base-ui/scoll-container';
+import ScollContainer from '@/base-ui/scoller';
 import LongforItem from '@/components/longfor-item';
 
 function HomeSectionV3(props) {
